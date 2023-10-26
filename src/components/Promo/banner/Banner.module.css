@@ -1,0 +1,32 @@
+.banner {
+    position: absolute;
+    background: #86D3F4;
+    width: 251px;
+    height: 357px;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+}
+
+.banner_show {
+    opacity: 1;
+}
+
+.banner button {
+    width: 156px;
+    height: 52px;
+    border: black solid 2px;
+    background: #86D3F4;
+}
+
+.banner button:hover {
+    background: #4ec0f3;
+}
