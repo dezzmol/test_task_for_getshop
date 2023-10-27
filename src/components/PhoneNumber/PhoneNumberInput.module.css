@@ -1,0 +1,31 @@
+.button_holder {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px
+}
+
+.button_holder_row {
+    display: flex;
+    gap: 10px;
+}
+
+.number_button {
+    width: 88px;
+    height: 52px;
+    padding: 0 0;
+    background: #86D3F4;
+    font-weight: 500;
+}
+
+.backspace_button {
+    width: 88px;
+    height: 52px;
+    padding: 0 0;
+    background: #86D3F4;
+    font-weight: 500;
+}
+
+.focused_button {
+    color: white;
+    background: black;
+}
