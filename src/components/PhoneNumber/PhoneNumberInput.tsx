@@ -6,10 +6,9 @@ interface Props {
     handleBackspaceClick(): void;
     buttonsRef: React.MutableRefObject<(HTMLButtonElement | null)[]>;
     handleButtonKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number): void;
-    focusedButtonIndex: number | null;
 }
 
-const PhoneNumberInput: FC<Props> = ({handleNumberClick, handleBackspaceClick, buttonsRef, handleButtonKeyDown, focusedButtonIndex}) => {
+const PhoneNumberInput: FC<Props> = ({handleNumberClick, handleBackspaceClick, buttonsRef, handleButtonKeyDown}) => {
 
 
     return (
@@ -21,14 +20,14 @@ const PhoneNumberInput: FC<Props> = ({handleNumberClick, handleBackspaceClick, b
                     onClick={() => handleNumberClick(item.toString())}
                     onKeyDown={(e) => handleButtonKeyDown(e, index)}
                     tabIndex={0}
-                    className={`${classes.number_button} ${focusedButtonIndex === index ? classes.focused_button : ''}`}
+                    className={classes.number_button}
                 >
                     {item}
                 </button>
             ))}
             <button
                 ref={(el) => (buttonsRef.current[10] = el)}
-                className={`${classes.backspace_button} ${focusedButtonIndex === 10 ? classes.focused_button : ''}`}
+                className={classes.backspace_button}
                 onClick={handleBackspaceClick}
                 onKeyDown={(e) => handleButtonKeyDown(e, 10)}
                 tabIndex={0}

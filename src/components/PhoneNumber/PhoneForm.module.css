@@ -52,7 +52,7 @@
     right: 2%;
 }
 
-.close_button_focus {
+button:focus {
     background: black;
     color: white;
 }

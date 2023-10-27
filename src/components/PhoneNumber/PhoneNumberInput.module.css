@@ -25,7 +25,7 @@
     font-weight: 500;
 }
 
-.focused_button {
+button:focus {
     color: white;
     background: black;
 }

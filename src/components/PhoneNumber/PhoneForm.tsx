@@ -14,12 +14,10 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
     const buttonsRef = useRef<Array<HTMLButtonElement | null>>([]);
     const [focusedButtonIndex, setFocusedButtonIndex] = useState<number | null>(null);
     const [checkBox, setCheckBox] = useState<boolean>(false)
-    const [isCheckboxFocused, setCheckboxFocused] = useState(false);
     const phoneInputRef = useRef<HTMLInputElement>(null);
     const checkBoxRef = useRef<HTMLInputElement>(null)
     const confirmButtonRef = useRef<HTMLButtonElement>(null)
     const closeButtonRef = useRef<HTMLButtonElement>(null)
-    const [isCloseButtonFocused, setIsCloseButtonFocused] = useState<boolean>(false)
 
     useEffect(() => {
         if (phoneInputRef.current) {
@@ -74,7 +72,6 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
         if (newIndex > 10) {
             if (checkBoxRef.current) {
                 checkBoxRef.current.focus()
-                setCheckboxFocused(true)
                 setFocusedButtonIndex(null)
             }
 
@@ -85,18 +82,15 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
         if (event.key === 'ArrowUp') {
             if (phoneValue) {
                 setFocusedButtonIndex(10);
-                setCheckboxFocused(false);
             }
         } else if (event.key === 'ArrowDown') {
             if (checkBox) {
                 if (confirmButtonRef.current) {
                     confirmButtonRef.current.focus()
-                    setCheckboxFocused(false)
                 }
             } else {
                 if (closeButtonRef.current) {
                     closeButtonRef.current.focus()
-                    setIsCloseButtonFocused(true)
                 }
             }
         }
@@ -111,7 +105,6 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
         if (event.key === "ArrowDown") {
             if (closeButtonRef.current) {
                 closeButtonRef.current.focus()
-                setIsCloseButtonFocused(true)
             }
         }
     }
@@ -121,12 +114,10 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
             if (checkBox) {
                 if (confirmButtonRef.current) {
                     confirmButtonRef.current.focus()
-                    setIsCloseButtonFocused(false)
                 }
             } else {
                 if (checkBoxRef.current) {
                     checkBoxRef.current.focus()
-                    setIsCloseButtonFocused(false)
                 }
             }
 
@@ -178,7 +169,6 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
                     handleBackspaceClick={handleBackspaceClick}
                     buttonsRef={buttonsRef}
                     handleButtonKeyDown={handleButtonKeyDown}
-                    focusedButtonIndex={focusedButtonIndex}
                 />
                 <div
                     className={`${classes.checkbox_form}`}
@@ -211,7 +201,7 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
                 </div>
             </div>
             <button
-                className={`${classes.close_button} ${isCloseButtonFocused ? classes.close_button_focus : ""}`}
+                className={classes.close_button}
                 ref={closeButtonRef}
                 onKeyDown={handleCloseButtonKeyDown}
                 onClick={() => setCurrentScreen("promo")}
