@@ -2,6 +2,7 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 import classes from "./PhoneForm.module.css"
 import PhoneInput from "react-phone-number-input/input";
 import PhoneNumberInput from "./PhoneNumberInput";
+import { isValidPhoneNumber } from 'react-phone-number-input'
 
 const qrCode = require("../../assets/qr-code.png")
 
@@ -18,6 +19,7 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
     const checkBoxRef = useRef<HTMLInputElement>(null)
     const confirmButtonRef = useRef<HTMLButtonElement>(null)
     const closeButtonRef = useRef<HTMLButtonElement>(null)
+    const [isError, setIsError] = useState<boolean>(false)
 
     useEffect(() => {
         if (phoneInputRef.current) {
@@ -33,6 +35,10 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
             }
         }
     }, [focusedButtonIndex]);
+
+    useEffect(() => {
+        setIsError(false)
+    }, [phoneValue]);
 
     const handleInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "ArrowDown") {
@@ -144,6 +150,15 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
 
     const handleConfirmClick = () => {
         //тут запрос на сервер с номером...
+        if (phoneValue?.length !== 12) {
+            setIsError(true)
+            return
+        }
+        if (!isValidPhoneNumber(phoneValue)) {
+            setIsError(true)
+            return
+        }
+
         setCurrentScreen("final")
     }
 
@@ -170,23 +185,33 @@ const PhoneForm: FC<Props> = ({setCurrentScreen}) => {
                     buttonsRef={buttonsRef}
                     handleButtonKeyDown={handleButtonKeyDown}
                 />
-                <div
-                    className={`${classes.checkbox_form}`}
-                    tabIndex={0}
-                >
-                    <input
-                        type={"checkbox"}
-                        checked={checkBox}
-                        className={classes.checkbox_input}
+                {isError ?
+                    <div
+                        className={classes.error_form}
                         tabIndex={0}
-                        ref={checkBoxRef}
-                        onKeyDown={handleCheckboxKeyDown}
-                        onChange={() => setCheckBox(prevState => !prevState)}
-                    />
-                    <div>
-                        Согласие на обработку персональных данных
+                    >
+                        НЕВЕРНО ВВЕДЁН НОМЕР
                     </div>
-                </div>
+                    :
+                    <div
+                        className={classes.checkbox_form}
+                        tabIndex={0}
+                    >
+                        <input
+                            type={"checkbox"}
+                            checked={checkBox}
+                            className={classes.checkbox_input}
+                            tabIndex={0}
+                            ref={checkBoxRef}
+                            onKeyDown={handleCheckboxKeyDown}
+                            onChange={() => setCheckBox(prevState => !prevState)}
+                        />
+                        <div>
+                            Согласие на обработку персональных данных
+                        </div>
+                    </div>
+                }
+
 
                 <div>
                     <button

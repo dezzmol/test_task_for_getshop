@@ -23,6 +23,7 @@
 
 .checkbox_form {
     width: 284px;
+    height: 52px;
     display: flex;
     font-weight: 400;
 }
@@ -69,4 +70,13 @@ button:focus {
     width: 194px;
     text-align: right;
     color: white;
+}
+
+.error_form {
+    width: 284px;
+    height: 52px;
+    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
