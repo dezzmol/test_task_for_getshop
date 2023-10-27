@@ -4,8 +4,8 @@
     width: 251px;
     height: 357px;
     top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
+    right: 0%;
+    transform: translate(0%, -50%);
     opacity: 0;
     transition: opacity 1s ease;
     padding: 20px 20px;
@@ -27,6 +27,7 @@
     background: #86D3F4;
 }
 
-.banner button:hover {
-    background: #4ec0f3;
+.banner button:focus {
+    background: black;
+    color: white;
 }
