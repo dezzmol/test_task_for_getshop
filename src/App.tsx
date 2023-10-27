@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import PromoVideo from "./components/Promo/PromoVideo";
+import FinalInfoScreen from "./components/finalScreen/FinalInfoScreen";
+import classes from "./App.css"
+import PhoneForm from "./components/PhoneNumber/PhoneForm";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    const [currentScreen, setCurrentScreen] = useState<string>("promo");
+
+    return (
+        <div className={classes.App}>
+            {currentScreen === 'promo' && <PromoVideo setCurrentScreen={setCurrentScreen} />}
+            {currentScreen === 'input' && <PhoneForm setCurrentScreen={setCurrentScreen} />}
+            {currentScreen === 'final' && <FinalInfoScreen setCurrentScreen={setCurrentScreen}/>}
+        </div>
+    );
+};
 
 export default App;
