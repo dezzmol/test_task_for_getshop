@@ -15,7 +15,6 @@ const PromoVideo: FC<Props> = ({setCurrentScreen}) => {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            console.log("s")
             setShowBanner(true);
         }, 5000);
 
