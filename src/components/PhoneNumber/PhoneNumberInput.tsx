@@ -1,4 +1,4 @@
-import React, {FC, useRef, useState} from 'react';
+import React, {FC} from 'react';
 import classes from "./PhoneNumberInput.module.css"
 
 interface Props {

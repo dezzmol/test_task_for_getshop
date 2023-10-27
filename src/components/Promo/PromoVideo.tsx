@@ -1,5 +1,4 @@
 import React, {FC, useEffect, useState} from 'react';
-import ReactPlayer from "react-player";
 import Banner from "./banner/Banner";
 import classes from "./PromoVideo.module.css"
 const video = require("../../assets/video.mp4")
@@ -10,7 +9,6 @@ interface Props {
 
 const PromoVideo: FC<Props> = ({setCurrentScreen}) => {
     const [showBanner, setShowBanner] = useState<boolean>(false);
-    const [pauseVideo, setPauseVideo] = useState<boolean>(false);
 
 
     useEffect(() => {
