@@ -1,0 +1,72 @@
+.container {
+    width: 1280px;
+    height: 720px;
+    background-image: url("../../assets/carBackground.png");
+}
+
+.phone_number_holder {
+    width: 380px;
+    height: 720px;
+    background: #86D3F4;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.phone_number_input {
+    background: #86D3F4;
+    width: 260px;
+    font-size: 32px;
+}
+
+.checkbox_form {
+    width: 284px;
+    display: flex;
+    font-weight: 400;
+}
+
+.checkbox_input {
+    width: 40px;
+    height: 40px;
+    background: #86D3F4;
+}
+
+.checkbox_focus {
+    border: black solid 2px;
+}
+
+.confirm_button {
+    background: #86D3F4;
+    width: 284px;
+    height: 52px;
+}
+
+.close_button {
+    background: white;
+    width: 88px;
+    height: 52px;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
+.close_button_focus {
+    background: black;
+    color: white;
+}
+
+.qrcode_holder {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    display: flex;
+    gap: 10px
+}
+
+.qrcode_text {
+    width: 194px;
+    text-align: right;
+    color: white;
+}
